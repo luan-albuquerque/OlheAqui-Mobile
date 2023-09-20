@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "OlheAqui2",
+    "slug": "OlheAqui2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "OlheAqui2"
+}
