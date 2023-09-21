@@ -1,6 +1,12 @@
 import { Dimensions, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  botao:{
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 15,
+    borderRadius: 7
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

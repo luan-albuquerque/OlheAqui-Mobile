@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, LocationObject, watchPositionAsync, LocationAccuracy } from "expo-location"
-import { View } from "react-native";
+import { View, TouchableOpacity, Text, Image } from "react-native";
 import { styles } from "./styles"
 import MapView, { Marker } from "react-native-maps";
+import { Modalize } from "react-native-modalize"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
+import { AlwaysOpen } from "./src/components/modals/AlwaysOpen";
 
 
 export default function App() {
@@ -33,20 +36,25 @@ export default function App() {
     }, (response) => {
       setLocation(response);
       mapRef.current?.animateCamera({
-        pitch: 70,
+        // pitch: 70,
         center: response.coords,
       })
 
     })
   }, [])
 
+  const modalizeRef = useRef<Modalize>(null);
+  function onOpen() {
+    modalizeRef.current?.open();
+  }
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
+
 
       {
         location &&
         <MapView style={styles.map}
-        ref={mapRef}
+          ref={mapRef}
           initialRegion={{
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
@@ -60,14 +68,15 @@ export default function App() {
             longitude: location.coords.longitude,
           }} />
 
-
-
         </MapView>
       }
 
 
 
-    </View>
+
+      <AlwaysOpen />
+
+    </GestureHandlerRootView>
   );
 
 
