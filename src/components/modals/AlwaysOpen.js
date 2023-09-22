@@ -1,9 +1,11 @@
-import React from 'react';
-import { StyleSheet, TextInput, Button, View, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, Button, View, Image, Text } from 'react-native';
 import { Modalize } from 'react-native-modalize';
+import { SearchAddress } from '../pages/SearchAddress';
+import { SearchLocalMapBox } from "./../../api/MapBoxApi"
 
 
-export class AlwaysOpen extends React.PureComponent {
+export const AlwaysOpen = () => {
   modal = React.createRef();
 
   closeModal = dest => {
@@ -11,50 +13,57 @@ export class AlwaysOpen extends React.PureComponent {
       this.modal.current.close(dest);
     }
   };
+  const [location, setLocation] = useState("");
+  const [globalValue, setGlobalValue] = useState({ features: [] });
+  
+   handleSearchUser = async () => {
+    setGlobalValue(await SearchLocalMapBox(location));
 
-  renderContent = () => (
-    <View style={s.content}>
-      <View style={s.footer}>
-        <TextInput
-          placeholder="Pesquisar"
-          style={s.footerText}
-        />
+  }
 
-        <Image
-          style={s.stretch}
-          source={{uri:"https://avatars.githubusercontent.com/u/51758832?v=4&s=120"}}
-          height={56}
-          width={56}
-        />
+
+  return (
+    <Modalize
+      ref={this.modal}
+      modalStyle={s.content__modal}
+      alwaysOpen={85}
+      handlePosition="inside"
+    >
+      <View style={s.content}>
+        <View style={s.footer}>
+          <TextInput
+            placeholder="Pesquisar"
+            style={s.footerText}
+            onChangeText={setLocation}
+            onChange={handleSearchUser}
+          />
+
+          <Image
+            style={s.stretch}
+            source={{ uri: "https://avatars.githubusercontent.com/u/51758832?v=4&s=120" }}
+            height={56}
+            width={56}
+          />
+
+        </View>
+        <SearchAddress data={globalValue} />
 
       </View>
-
-    </View>
+    </Modalize>
   );
-
-  render() {
-    return (
-      <Modalize
-        ref={this.modal}
-        modalStyle={s.content__modal}
-        alwaysOpen={85}
-        handlePosition="inside"
-      >
-        {this.renderContent()}
-      </Modalize>
-    );
-  }
 }
+
 
 const s = StyleSheet.create({
   content: {
     padding: 20,
+    gap: 20
   },
 
-  stretch:{
-      borderRadius: 20,
-      width: 56,
-      height: 56,
+  stretch: {
+    borderRadius: 20,
+    width: 56,
+    height: 56,
   },
 
 
