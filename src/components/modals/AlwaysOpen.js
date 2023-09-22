@@ -57,7 +57,8 @@ export const AlwaysOpen = () => {
 const s = StyleSheet.create({
   content: {
     padding: 20,
-    gap: 20
+    gap: 20,
+    backgroundColor:'#F7F7F6'
   },
 
   stretch: {
@@ -69,7 +70,7 @@ const s = StyleSheet.create({
 
   footer: {
 
-    backgroundColor: "#fff",
+    backgroundColor: "#E9E9E9",
     borderRadius: 20,
     height: 56,
     paddingLeft: 24,
