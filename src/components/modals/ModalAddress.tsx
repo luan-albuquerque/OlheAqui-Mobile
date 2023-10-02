@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, Button, View, Image, Text } from 'react-native';
+import { StyleSheet, TextInput, View, Image, Text } from 'react-native';
 import { Modalize } from 'react-native-modalize';
-import { SearchAddress } from '../pages/SearchAddress';
-import { SearchLocalMapBox } from "./../../api/MapBoxApi"
+import { ListAddress } from '../tables/ListAddress';
+import { SearchLocalMapBox } from "../../api/MapBoxApi"
+import { images } from '../../../styles.global';
 
 
-export const AlwaysOpen = () => {
-  modal = React.createRef();
+export const ModalAddress: React.FC = () => {
+  const modal = React.createRef<Modalize>();
 
-  closeModal = dest => {
-    if (this.modal.current) {
-      this.modal.current.close(dest);
+  const closeModal = (dest: any) => {
+    if (modal.current) {
+      modal.current.close(dest);
     }
   };
   const [location, setLocation] = useState("");
   const [globalValue, setGlobalValue] = useState({ features: [] });
-  
-   handleSearchUser = async () => {
+
+  const handleSearchUser = async () => {
     setGlobalValue(await SearchLocalMapBox(location));
 
   }
@@ -24,7 +25,7 @@ export const AlwaysOpen = () => {
 
   return (
     <Modalize
-      ref={this.modal}
+      ref={modal}
       modalStyle={s.content__modal}
       alwaysOpen={85}
       handlePosition="inside"
@@ -40,13 +41,13 @@ export const AlwaysOpen = () => {
 
           <Image
             style={s.stretch}
-            source={{ uri: "https://avatars.githubusercontent.com/u/51758832?v=4&s=120" }}
+            source={{ uri: images.profile }}
             height={56}
             width={56}
           />
 
         </View>
-        <SearchAddress data={globalValue} />
+        <ListAddress data={globalValue} />
 
       </View>
     </Modalize>
@@ -58,7 +59,7 @@ const s = StyleSheet.create({
   content: {
     padding: 20,
     gap: 20,
-    backgroundColor:'#F7F7F6'
+    backgroundColor: '#F7F7F6'
   },
 
   stretch: {

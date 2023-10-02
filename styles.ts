@@ -1,7 +1,32 @@
 import { Dimensions, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  botao:{
+  text_apresentation: {
+    color: "#82AD7F",
+    fontFamily: "Syncopate",
+    fotStyle: "normal",
+    
+  },
+
+  title_apresentation: {
+    color: "#82AD7F",
+    fontFamily: "Syncopate",
+    fotStyle: "normal",
+    fontSize: 25
+    
+  },
+  view_apresentation: {
+    display: "flex",
+    width: "auto" ,
+    height: "auto",
+    padding: 10,
+    position: "absolute",
+    zIndex: 2
+  },
+  fundo: {
+    zIndex: 1
+  },
+  botao: {
     alignItems: "center",
     justifyContent: "center",
     padding: 15,
@@ -9,9 +34,11 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F6',
+    backgroundColor: "#3BADBD",
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    maxWidth: Dimensions.get("window").width,
+    maxHeight: Dimensions.get("window").height,
   },
 
   map: {
