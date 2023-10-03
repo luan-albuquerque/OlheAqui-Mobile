@@ -8,6 +8,7 @@ import { ModalAddress } from "./src/components/modals/ModalAddress";
 import { SearchLocalByLongAndLatMapBox } from "./src/api/MapBoxApi"
 import * as geolib from 'geolib'
 import { SafeAreaView } from "react-native";
+import { LoginScreen } from "./src/screens/Authetication";
 
 interface Teste {
   latitude: number,
@@ -94,54 +95,57 @@ export default function App() {
   }
   return (
 
-    <SafeAreaView style={styles.container}>
-      <GestureHandlerRootView style={styles.container}>
+    <SafeAreaView   style={styles.safeArea}>
+    
+      <LoginScreen  />
+      {/* <GestureHandlerRootView style={styles.container}>
 
 
-        {
-          location &&
-          <MapView style={styles.map}
-            ref={mapRef}
-            onPress={handleMapPress}
-            region={region}
-            zoomEnabled={true}
-            initialRegion={{
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude,
-              latitudeDelta: 0.005,
-              longitudeDelta: 0.005
-            }}
-            minZoomLevel={17}
-            showsUserLocation={true}
-            loadingEnabled={true}
-          >
-
-
-
-
-
-            {markerCoords && (
-              <Marker coordinate={markerCoords} title={titleOnPress} onPress={setLocationOnPress} />
-            )}
-
+{
+  location &&
+  <MapView style={styles.map}
+  ref={mapRef}
+  onPress={handleMapPress}
+  region={region}
+  zoomEnabled={true}
+  initialRegion={{
+    latitude: location.coords.latitude,
+    longitude: location.coords.longitude,
+    latitudeDelta: 0.005,
+    longitudeDelta: 0.005
+  }}
+  minZoomLevel={17}
+  showsUserLocation={true}
+  loadingEnabled={true}
+  >
+  
+  
+  
+  
+  
+  {markerCoords && (
+    <Marker coordinate={markerCoords} title={titleOnPress} onPress={setLocationOnPress} />
+    )}
+    
             {markerCoordsCircle && (
               <Circle
-                center={{ latitude: markerCoordsCircle.latitude, longitude: markerCoordsCircle.longitude }}
-                radius={markerCoordsCircle.radio}
-                fillColor={'rgba(200, 300, 200, 0.5)'}
+              center={{ latitude: markerCoordsCircle.latitude, longitude: markerCoordsCircle.longitude }}
+              radius={markerCoordsCircle.radio}
+              fillColor={'rgba(200, 300, 200, 0.5)'}
               />
-            )}
-
+              )}
+              
           </MapView>
         }
-
+        
         <ModalAddress />
-      </GestureHandlerRootView>
-    </SafeAreaView>
-
-  );
-
-
-}
-
-
+      </GestureHandlerRootView> */}
+   </SafeAreaView>
+   
+   );
+   
+   
+  }
+  
+  
+  

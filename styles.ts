@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     color: "#82AD7F",
     fontFamily: "Syncopate",
     fotStyle: "normal",
-    
+
   },
 
   title_apresentation: {
@@ -13,18 +13,28 @@ export const styles = StyleSheet.create({
     fontFamily: "Syncopate",
     fotStyle: "normal",
     fontSize: 25
-    
+
   },
   view_apresentation: {
-    display: "flex",
-    width: "auto" ,
-    height: "auto",
-    padding: 10,
     position: "absolute",
+    top: 1,
     zIndex: 2
   },
+  container_absolute: {
+    display: "flex",
+    padding: 20,
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+
+  },
+
   fundo: {
     zIndex: 1
+  },
+  button_start: {
+    alignItems: "flex-end",
+    marginTop: 20,
   },
   botao: {
     alignItems: "center",
@@ -39,6 +49,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     maxWidth: Dimensions.get("window").width,
     maxHeight: Dimensions.get("window").height,
+  },
+
+  safeArea: {
+    backgroundColor: "#3BADBD",
+
   },
 
   map: {
