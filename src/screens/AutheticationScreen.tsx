@@ -3,9 +3,13 @@ import { View, Text, Button } from 'react-native';
 import { Fundo, LogoMaps } from '../../styles.global';
 import { styles } from '../../styles';
 import { ButtonGoogle } from '../components/button/ButtonGoogle';
+import { useNavigation } from '@react-navigation/native';
 
+interface ILoginScreen {
+   navigation : any;
+}
 
-export const LoginScreen: React.FC = () => {
+export const LoginScreen = ({ navigation }: ILoginScreen) => {
 
   return (
     <View>
@@ -23,7 +27,7 @@ export const LoginScreen: React.FC = () => {
             </View>
           </View>
           <View style={styles.button_start}>
-            <ButtonGoogle name='Entrar' />
+            <ButtonGoogle name='Entrar' onPress={() => navigation.navigate('MapScreen')} />
           </View>
         </View>
       </View>
